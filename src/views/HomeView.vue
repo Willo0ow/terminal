@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container>
+    <v-row>
+      <v-col v-for="(terminal, idx) of terminals" :key="idx">
+        <v-card @click="$router.push(terminal.path)" max-width="300">
+          <v-card-title>{{terminal.label}}</v-card-title>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+  name: "HomeView",
+  data() {
+    return {
+      terminals: [
+        {label: "Szklenie", path: "/glazing"},
+         {label: "Poszerzenia", path: "/extensions"}
+      ]
+    };
+  },
+};
 </script>
